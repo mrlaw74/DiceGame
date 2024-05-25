@@ -11,5 +11,5 @@ echo "Qt5_DIR=$Qt5_DIR"
 rm -rf build
 mkdir build
 cd build
-cmake ..
+cmake -DQt5_DIR=$Qt5_DIR ..
 make
