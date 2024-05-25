@@ -1,0 +1,28 @@
+name: Build and Deploy
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: macos-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+
+      - name: Set up Qt
+        uses: jurplel/setup-qt@v2
+        with:
+          version: '5.15.2'
+          host: 'mac'
+
+      - name: Make run.sh Executable
+        run: chmod +x ./run.sh
+
+      - name: Build Application
+        run: ./run.sh
+
+      # Add steps for deployment or any additional tasks
