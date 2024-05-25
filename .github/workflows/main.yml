@@ -18,15 +18,17 @@ jobs:
           brew update
           brew install qt@5
           echo 'export PATH="/usr/local/opt/qt@5/bin:$PATH"' >> $GITHUB_ENV
-          echo 'export CMAKE_PREFIX_PATH="/usr/local/opt/qt@5/lib/cmake:$CMAKE_PREFIX_PATH"' >> $GITHUB_ENV
+          echo 'export CMAKE_PREFIX_PATH="/usr/local/Cellar/qt5/5.15.1/:$CMAKE_PREFIX_PATH"' >> $GITHUB_ENV
           echo 'export Qt5_DIR="/usr/local/opt/qt@5/lib/cmake/Qt5"' >> $GITHUB_ENV
 
       - name: Make run.sh Executable
         run: chmod +x ./run.sh
+
       - name: Print Environment Variables
         run: env
+
       - name: Build Application
         env:
-          CMAKE_PREFIX_PATH: "/usr/local/opt/qt@5/lib/cmake"
+          CMAKE_PREFIX_PATH: "/usr/local/Cellar/qt5/5.15.1/"
           Qt5_DIR: "/usr/local/opt/qt@5/lib/cmake/Qt5"
         run: ./run.sh
